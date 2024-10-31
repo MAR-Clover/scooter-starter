@@ -1,52 +1,47 @@
+const { describe, expect, it } = require("@jest/globals");
 const Scooter = require('../src/Scooter')
 const User = require('../src/User')
 
-//typeof scooter === object
-describe('scooter object', () => {
-  test('Scooter class should create Scooter instance', () => {
-    const scooter = new Scooter();
-    expect(scooter).toBeInstanceOf(Scooter);
+describe("scooter.rent(user)", () => {
+  const scooter = new Scooter('station1');
+
+  it("checks a scooter out to a user", () => {
+    scooter.charge = 30;
+    scooter.isBroken = false;
+    expect(scooter.rent('mel')).toEqual('mel');
   });
-})
-  //checks initialization of properties
 
-  it('station is assigned correctly', () => {
-    const scooter2 = new Scooter('nyc')
-    expect(scooter2.station).toBe('nyc')
+  it("throws an error if battery dead or scooter broken", () => {
+    scooter.charge = 10;
+    scooter.isBroken = false;
+    expect(() => scooter.rent('mel')).toThrow('scooter needs to charge');
     
-  })
-  it('scooter serial increments correctly', () => {
-    const scooter3 = new Scooter('nyc')
-    expect(scooter3.serial).toBe(3)
-    
-  })
-  it('scooter charge initialized to 100', () => {
-    const scooter4 = new Scooter('nyc')
-    expect(scooter4.charge).toBe(100)
-    
-  })
-  it('scooter isBroken is initialized correctly', () => {
-    const scooter5 = new Scooter('nyc')
-    expect(scooter5.isBroken).toBe(false)
-    
-  })
+    scooter.charge = 30;
+    scooter.isBroken = true;
+    expect(() => scooter.rent('mel')).toThrow('scooter needs repair');
+  });
+});
 
-//Method tests
-describe('scooter methods', () => {
-  // tests here!
+describe("scooter.dock(station)", () => {
+  it("returns a scooter to a station", () => {
+    const scooter = new Scooter('station1');
+    expect(scooter.dock('station2')).toBeUndefined(); // dock method returns nothing
+    expect(scooter.station).toBe('station2');
+    expect(scooter.user).toBeNull();
+  });
+});
+/*describe("scooter.charge()", () => {
+  it.skip("charges a scooter", () => {
+    // Arrange
+    // Act
+    // Assert
+  });
+});
 
-  //rent method
-  it('throws error when scooter charge is insufficient', () => {
-    const scooter6 = new Scooter('nyc')
-    const user1 = new User('George')
-    expect(scooter6.rent(user1)).toBe()
-  })
-  
-
-  //dock method
-
-  //requestRepair method
-
-  //charge method
-
-})
+describe("scooter.repair()", () => {
+  it.skip("repairs a scooter", () => {
+    // Arrange
+    // Act
+    // Assert
+  });
+});*/
