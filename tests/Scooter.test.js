@@ -1,5 +1,5 @@
 const { describe, expect, it } = require("@jest/globals");
-const Scooter = require("../classes/Scooter.js");
+const Scooter = require("../src/Scooter");
 
 describe("scooter.rent(user)", () => {
   const scooter = new Scooter('station1');
@@ -24,26 +24,9 @@ describe("scooter.rent(user)", () => {
 describe("scooter.dock(station)", () => {
   it("returns a scooter to a station", () => {
     const scooter = new Scooter('station1');
-    expect(scooter.dock('station2')).toBeUndefined(); // dock method returns nothing
+    expect(scooter.dock('station2')).toBeUndefined(); 
     expect(scooter.station).toBe('station2');
     expect(scooter.user).toBeNull();
   });
 });
 
-
-
-/*describe("scooter.charge()", () => {
-  it.skip("charges a scooter", () => {
-    // Arrange
-    // Act
-    // Assert
-  });
-});
-
-describe("scooter.repair()", () => {
-  it.skip("repairs a scooter", () => {
-    // Arrange
-    // Act
-    // Assert
-  });
-});*/
