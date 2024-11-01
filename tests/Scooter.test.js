@@ -1,6 +1,5 @@
 const { describe, expect, it } = require("@jest/globals");
-const Scooter = require('../src/Scooter')
-const User = require('../src/User')
+const Scooter = require("../classes/Scooter.js");
 
 describe("scooter.rent(user)", () => {
   const scooter = new Scooter('station1');
@@ -30,6 +29,9 @@ describe("scooter.dock(station)", () => {
     expect(scooter.user).toBeNull();
   });
 });
+
+
+
 /*describe("scooter.charge()", () => {
   it.skip("charges a scooter", () => {
     // Arrange
