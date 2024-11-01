@@ -1,5 +1,5 @@
 const { describe, expect, it } = require("@jest/globals");
-const User = require("../classes/User.js");
+const User = require("../src/User");
 
 describe("user.login(password)", () => {
   const user = new User('mel_yef', '123', 24);

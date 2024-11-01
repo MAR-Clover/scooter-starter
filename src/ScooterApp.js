@@ -89,5 +89,3 @@ class ScooterApp {
 
 module.exports = ScooterApp;
 
-
-module.exports = ScooterApp

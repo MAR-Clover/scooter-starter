@@ -74,20 +74,16 @@ describe('rentScooter tests', () => {
   });
 
   describe('rent already rented scooter', () => {
-    test('Should throw scooter already rented error', () => {
-      
-      scooter.user = user;
-      expect(() => {
-        scooterApp.rentScooter(scooter, new User('anotherUser', 'password456'))}).toThrow('Scooter already rented or not available');
-    });
+    test('Should throw scooter already rented error', ()=>{
+      scooter.user = user
+      expect(() => {scooterApp.rentScooter(scooter, new User('anotherUser', 'password456'))}).toThrow('Scooter already rented or not available')})
   });
 
   describe('rent scooter not at station', () => {
     test('Should throw scooter not available error', () => {
-      scooterApp.stations['nyc'] = [];
-      expect(() => {scooterApp.rentScooter(scooter, user)}).toThrow('Scooter already rented or not available');
-    });
-  });
+      scooterApp.stations['nyc'] = []
+      expect(() => {scooterApp.rentScooter(scooter, user)}).toThrow('Scooter already rented or not available')});
+  })
 });
 
 // dock scooter
@@ -96,8 +92,8 @@ describe('dock scooter tests', () => {
   let scooter13
   let cobra
  
-  cobra = scooterApp.registerUser('Cobra', 'celtics123', 27); // Ensure user is registered
-  scooter13=scooterApp.createScooter('nyc'); // Create a scooter at 'nyc' station
+  cobra = scooterApp.registerUser('Cobra', 'celtics123', 27); 
+  scooter13=scooterApp.createScooter('nyc'); 
   
 
 describe('invalid station docking', ()=>{
